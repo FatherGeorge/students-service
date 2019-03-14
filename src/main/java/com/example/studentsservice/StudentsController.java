@@ -47,7 +47,7 @@ public class StudentsController {
         if (!student.isPresent())
             return new Response().setStatusCode("3").setStatusDesc("Student doesn't exist");
 
-        studentsService.deleteStudentByName(studentToDelete.getFirstName());
+        studentsService.deleteStudentByFirstNameAndLastName(studentToDelete.getFirstName(), studentToDelete.getLastName());
 
         return new Response().setStatusCode("0").setStatusDesc("Ok");
     }

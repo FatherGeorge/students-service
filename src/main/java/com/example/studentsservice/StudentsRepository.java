@@ -8,8 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface StudentsRepository extends CrudRepository<Student, Long> {
-    Optional<Student> findStudentByFirstName(String name);
+    Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
 
     @Transactional
-    void deleteStudentByFirstName(String firstName);
+    void deleteStudentByFirstNameAndLastName(String firstName, String lastName);
 }

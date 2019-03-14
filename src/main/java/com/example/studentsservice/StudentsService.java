@@ -5,9 +5,9 @@ import java.util.Optional;
 public interface StudentsService {
     Iterable<Student> listStudents();
 
-    Optional<Student> findStudentByFirstNameAndLastName(String name, String lastName);
+    Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
 
     Student saveStudent(Student studentToAdd);
 
-    void deleteStudentByName(String name);
+    void deleteStudentByFirstNameAndLastName(String firstName, String lastName);
 }

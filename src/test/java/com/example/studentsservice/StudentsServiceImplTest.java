@@ -49,7 +49,7 @@ public final class StudentsServiceImplTest {
     @Test
     public void listStudentsReturnsList() {
         // Setup
-        Student expected = new Student("Ivan", "Ivanov");
+        Student expected = new Student("Ivan", "Ivanov", new Integer[]{1, 2});
         studentsRepository.save(expected);
 
         // Execute
@@ -60,13 +60,13 @@ public final class StudentsServiceImplTest {
     }
 
     @Test
-    public void findStudentByNameReturnsEmptyOptional() {
+    public void findStudentByFirstNameAndLastNameReturnsEmptyOptional() {
         // Setup
         Student expected = new Student("Ivan", "Ivanov");
         studentsRepository.save(expected);
 
         // Execute
-        Optional<Student> actual = studentsService.findStudentByFirstNameAndLastName("Ivan", "Petrov");
+        Optional<Student> actual = studentsService.findStudentByFirstNameAndLastName("Petr", "Petrov");
 
         // Assert
         assertFalse(actual.isPresent());
@@ -75,8 +75,9 @@ public final class StudentsServiceImplTest {
     @Test
     public void findStudentByNameReturnsStudent() {
         // Setup
-        Student expected = new Student("Ivan", "Ivanov");
+        Student expected = new Student("Ivan", "Petrov");
         studentsRepository.save(expected);
+        studentsRepository.save(new Student("Ivan", "Ivanov"));
 
         // Execute
         Optional<Student> actual = studentsService.findStudentByFirstNameAndLastName("Ivan", "Petrov");
@@ -92,9 +93,9 @@ public final class StudentsServiceImplTest {
         studentsService.saveStudent(expected);
 
         // Execute
-        Optional<Student> actual = studentsService.findStudentByFirstNameAndLastName("Ivan", "Petrov");
+        Optional<Student> actual = studentsService.findStudentByFirstNameAndLastName("Ivan", "Ivanov");
 
-        Iterable<Student> listStudents = studentsRepository.findAll();
+        Iterable<Student> listStudents = studentsService.listStudents();
 
         // Assert
         assertThat(actual.get(), is(expected));
@@ -108,7 +109,7 @@ public final class StudentsServiceImplTest {
         studentsRepository.save(expected);
 
         // Execute
-        studentsService.deleteStudentByName("react");
+        studentsService.deleteStudentByFirstNameAndLastName("Ivan", "Ivanov");
 
         Iterable<Student> listStudents = studentsRepository.findAll();
 

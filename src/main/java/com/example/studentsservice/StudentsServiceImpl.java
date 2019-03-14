@@ -17,8 +17,8 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
-    public Optional<Student> findStudentByFirstNameAndLastName(String lastName, String firstName) {
-        return studentsRepository.findStudentByFirstName(lastName);
+    public Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName) {
+        return studentsRepository.findStudentByFirstNameAndLastName(firstName, lastName);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
-    public void deleteStudentByName(String name) {
-        studentsRepository.deleteStudentByFirstName(name);
+    public void deleteStudentByFirstNameAndLastName(String firstName, String lastName) {
+        studentsRepository.deleteStudentByFirstNameAndLastName(firstName, lastName);
     }
 }
