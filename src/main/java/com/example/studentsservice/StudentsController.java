@@ -57,6 +57,7 @@ public class StudentsController {
         final Optional<Student> student = studentsService.findStudentByFirstNameAndLastName(studentToChange.getFirstName(), studentToChange.getLastName());
         if (!student.isPresent())
             return new Response().setStatusCode("3").setStatusDesc("Student doesn't exist");
+        studentToChange.setId(student.get().getId());
 
         studentsService.saveStudent(studentToChange);
 

@@ -28,6 +28,6 @@ public class StudentsServiceImpl implements StudentsService {
 
     @Override
     public void deleteStudentByFirstNameAndLastName(String firstName, String lastName) {
-        studentsRepository.deleteStudentByFirstNameAndLastName(firstName, lastName);
+        studentsRepository.deleteStudentsByFirstNameAndLastName(firstName, lastName);
     }
 }

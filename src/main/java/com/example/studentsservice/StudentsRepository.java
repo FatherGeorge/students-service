@@ -11,5 +11,5 @@ public interface StudentsRepository extends CrudRepository<Student, Long> {
     Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
 
     @Transactional
-    void deleteStudentByFirstNameAndLastName(String firstName, String lastName);
+    void deleteStudentsByFirstNameAndLastName(String firstName, String lastName);
 }
